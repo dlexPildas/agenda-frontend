@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import api from "../../services/api";
 
@@ -32,6 +33,13 @@ export default class Login extends Component {
     new_password: "",
     register: 0
   };
+
+  async componentDidMount(){
+    const result = await axios.post(
+      "https://www.linkedin.com/oauth/v2/accessToken?grant_type=client_credentials&client_id=86y57qpud5m7qv&client_secret=w2IzVmSMtzVFJPnL"
+    );
+    console.log(result);    
+  }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
